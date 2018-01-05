@@ -6,11 +6,11 @@ import {
 import PostsDisplay from './PostsDisplay'
 
 const App = (props) => (
-  <Router startingPostId={props.startingPostId}>
+  <Router startingPage={props.startingPage}>
     <div>
       <Route
         path='/'
-        startingPostId={props.startingPostId}
+        startingPage={props.startingPage}
         render={(routeProps) => <PostsDisplay {...props} {...routeProps} /> }
       />
     </div>

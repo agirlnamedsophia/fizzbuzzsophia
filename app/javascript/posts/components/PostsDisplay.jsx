@@ -3,56 +3,61 @@ import { Link } from 'react-router-dom'
 import queryString from 'query-string'
 import axios from 'axios'
 
-import PostTitle from './PostTitle'
-import PostBody from './PostBody'
+import Post from './Post'
 
 class PostsDisplay extends React.Component {
   constructor() {
     super()
     this.state = {
-      post: {}
+      posts: {},
+      fetched: false
     }
   }
 
-  fetchPost(id) {
-    axios.get(`api/v1/posts/${id}`)
-      .then(response => {
-        this.setState({ post: response.data })
-      })
-      .catch(error => {
-        console.error(error)
-      })
+  fetchPosts(page) {
+    if(this.state.fetched == false) {
+      axios.get(`api/v1/posts`)
+        .then(response => {
+          this.setState({
+            posts: response.data,
+            fetched: true
+          })
+        })
+        .catch(error => {
+          console.error(error)
+        })
+    }
   }
 
-  setPostIdFromQueryString(qs) {
+  setPageFromQueryString(qs) {
     this.qsParams = queryString.parse(qs)
-    if(this.qsParams.post) {
-      this.postId = Number(this.qsParams.post)
+    if(this.qsParams.page) {
+      this.page = Number(this.qsParams.page)
     } else {
-      this.postId = this.props.startingPostId
-      this.props.history.push(`/?post=${this.postId}`)
+      this.page = this.props.startingPage
+      this.props.history.push(`/?page=${this.page}`)
     }
   }
 
   componentDidMount() {
-    this.setPostIdFromQueryString(this.props.location.search)
-    this.fetchPost(this.postId)
+    this.setPageFromQueryString(this.props.location.search)
+    this.fetchPosts(this.page)
   }
 
   componentWillReceiveProps(nextProps) {
-    this.setPostIdFromQueryString(nextProps.location.search)
-    this.fetchPost(this.postId)
+    this.setPageFromQueryString(nextProps.location.search)
+    this.fetchPosts(this.page)
   }
 
   render() {
-    const post = this.state.post
-
-    return (
+    const posts = this.state.posts
+    return(
       <div>
-        <div className='PostsContainer'>
-          <PostTitle post={this.state.post} />
-          <PostBody post={this.state.post} />
-        </div>
+        {this.state.fetched && posts &&
+          posts.map((post) =>
+            <Post key={post.id} post={post} />
+          )
+        }
       </div>
     )
   }

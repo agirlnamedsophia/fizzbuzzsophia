@@ -1,6 +1,5 @@
 .PostsWrapper {
   display:flex;
-  height: 90vh;
   justify-content: center;
   align-items: center;
 }
@@ -11,6 +10,9 @@
   padding: 10px;
 }
 .PostTitle {
-  font-size: 2em;
+  font-size: 1.5em;
   padding: 0.5em;
+}
+.PostBody {
+  font-size: 1em;
 }

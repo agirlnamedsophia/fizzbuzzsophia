@@ -14,8 +14,7 @@
  *= require_self
  */
 
-body {
-  font-family: 'Source Serif Pro', serif;
-}
+@import 'shared/defaults';
 
+@import 'components/header';
 @import 'components/post';

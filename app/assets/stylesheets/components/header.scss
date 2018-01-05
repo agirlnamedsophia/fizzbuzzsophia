@@ -1,0 +1,13 @@
+.Header {
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2em;
+  &--title {
+    font-size: 2em;
+  }
+  &--author {
+    font-size: 1em;
+  }
+}
