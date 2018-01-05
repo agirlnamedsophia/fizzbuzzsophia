@@ -1,0 +1,22 @@
+.PostsWrapper {
+  display:flex;
+  height: 90vh;
+  justify-content: center;
+  align-items: center;
+}
+
+.PostsContainer {
+  text-align: center;
+  max-width: 500px;
+  min-width: 200px;
+  padding: 10px;
+
+  .PostBody {
+
+  }
+
+  .PostTitle {
+    font-size: 2em;
+    padding: 0.5em;
+  }
+}

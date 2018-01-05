@@ -3,6 +3,9 @@ import { Link } from 'react-router-dom'
 import queryString from 'query-string'
 import axios from 'axios'
 
+import PostTitle from './PostTitle'
+import PostBody from './PostBody'
+
 class PostsDisplay extends React.Component {
   constructor() {
     super()
@@ -46,8 +49,10 @@ class PostsDisplay extends React.Component {
 
     return (
       <div>
-        <p>{this.state.post.title}</p>
-        <p>{this.state.post.body}</p>
+        <div className='PostsContainer'>
+          <PostTitle post={this.state.post} />
+          <PostBody post={this.state.post} />
+        </div>
       </div>
     )
   }
