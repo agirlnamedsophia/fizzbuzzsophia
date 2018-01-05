@@ -1,26 +1,32 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import queryString from 'query-string'
 import axios from 'axios'
 
 import Post from './Post'
+import PostNavigation from './PostNavigation'
 
 class PostsDisplay extends React.Component {
   constructor() {
     super()
     this.state = {
       posts: {},
-      fetched: false
+      fetched: false,
+      currentPage: 1,
     }
   }
 
   fetchPosts(page) {
     if(this.state.fetched == false) {
-      axios.get(`api/v1/posts`)
+      axios.get(`api/v1/posts`, {
+        params: {
+          page: page
+        }
+      })
         .then(response => {
           this.setState({
             posts: response.data,
-            fetched: true
+            fetched: true,
+            currentPage: page,
           })
         })
         .catch(error => {
@@ -32,25 +38,25 @@ class PostsDisplay extends React.Component {
   setPageFromQueryString(qs) {
     this.qsParams = queryString.parse(qs)
     if(this.qsParams.page) {
-      this.page = Number(this.qsParams.page)
+      this.setState({ currentPage: Number(this.qsParams.page) })
     } else {
-      this.page = this.props.startingPage
-      this.props.history.push(`/?page=${this.page}`)
+      this.props.history.push(`/?page=${this.state.currentPage}`)
     }
   }
 
   componentDidMount() {
     this.setPageFromQueryString(this.props.location.search)
-    this.fetchPosts(this.page)
+    this.fetchPosts(this.state.currentPage)
   }
 
   componentWillReceiveProps(nextProps) {
     this.setPageFromQueryString(nextProps.location.search)
-    this.fetchPosts(this.page)
+    this.fetchPosts(this.state.currentPage)
   }
 
   render() {
     const posts = this.state.posts
+
     return(
       <div>
         {this.state.fetched && posts &&
