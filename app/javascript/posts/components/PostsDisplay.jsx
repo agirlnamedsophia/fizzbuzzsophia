@@ -56,7 +56,6 @@ class PostsDisplay extends React.Component {
 
   render() {
     const posts = this.state.posts
-
     return(
       <div>
         {this.state.fetched && posts &&

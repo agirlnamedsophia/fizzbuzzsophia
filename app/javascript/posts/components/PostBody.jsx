@@ -1,8 +1,10 @@
 import React from 'react';
 
+const ReactMarkdown = require('react-markdown')
+
 const PostBody = (props) => (
   <div className='PostBody'>
-    {props.post.body}
+    <ReactMarkdown source={props.post.body} />
   </div>
 )
 
