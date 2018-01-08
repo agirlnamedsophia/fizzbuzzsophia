@@ -7,7 +7,9 @@ And it took lots of trying and running away and failing to get to that point, wh
 So I started this. I wrote the backend in Rails, because it's easy, because it's quick, because there's solid patterns already established and why reinvent the wheel/rail if it's already there?
 
 I wrote the frontend in React, because it's hot right now and because I'm so uncomfortable with it. I leveraged the snazzy Rails 5
-  `rails new --fizzbuzzsophia --webpack=react`
+
+    rails new --fizzbuzzsophia --webpack=react
+
 command and typed a handful of webpack commands I found via the handy internet and voilà! I was writing components and rendering views. I'm on the Site Reliability Engineering team at Betterment (caveat, all these thoughts are my own and don't represent the engineering team or the company at Betterment) and so I don't really have the chance to fiddle around with hot javascript frameworks. They're tons of fun. I'm glad I have a space to try them out.
 
 I don't have a database. I did, but then I didn't want one. (At least, for now). I wrote a tiny almost meaningless generator to create timestamped directories and markdown files with the old `ARV[0]` as the name of the file. I don't have any tests yet. I should get those up and running. But I hope to spend some time messing around with mocha or whatever folk use to test their JS.
