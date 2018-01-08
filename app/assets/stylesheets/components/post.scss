@@ -4,15 +4,16 @@
   align-items: center;
 }
 .PostContainer {
-  text-align: center;
   max-width: 500px;
   min-width: 200px;
   padding: 10px;
 }
 .PostTitle {
+  text-align: center;
   font-size: 1.5em;
   padding: 0.5em;
 }
 .PostBody {
   font-size: 1em;
+  text-align: justify;
 }
