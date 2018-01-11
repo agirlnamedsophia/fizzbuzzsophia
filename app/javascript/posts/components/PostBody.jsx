@@ -4,7 +4,7 @@ const ReactMarkdown = require('react-markdown')
 
 const PostBody = (props) => (
   <div className='PostBody'>
-    <ReactMarkdown source={props.post.body} />
+    <ReactMarkdown source={props.body} />
   </div>
 )
 

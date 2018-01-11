@@ -5,20 +5,22 @@ class Post
     @path = path
   end
 
-  def title
-    @title ||= PostTitle.from_filename filename
-  end
-
-  def body
-    @body = File.read path
-  end
-
-  def created_at
-    @created_at ||= Time.zone.at(timestamp)
-  end
-
   def as_json(options={})
-    @as_json ||= { title: title, body: body, created_at: created_at, id: timestamp }
+    @as_json ||= {
+      title: title,
+      short_body: short_body,
+      body: body,
+      created_at: created_at,
+      id: id
+    }
+  end
+
+  def id
+    @id ||= timestamp
+  end
+
+  def self.find(id)
+    Post.ordered.find { |post| post.id == id.to_i }
   end
 
   def self.all
@@ -32,6 +34,22 @@ class Post
   private
 
   attr_reader :path
+
+  def title
+    @title ||= PostTitle.from_filename filename
+  end
+
+  def body
+    @body = File.read path
+  end
+
+  def short_body
+    @short_body ||= body.truncate_words(75)
+  end
+
+  def created_at
+    @created_at ||= Time.zone.at(timestamp)
+  end
 
   def timestamp
     @timestamp ||= path[/(\d+)/].to_i
