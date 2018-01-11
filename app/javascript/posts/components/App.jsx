@@ -10,7 +10,7 @@ import Post from './Post'
 const App = (props) => (
   <Router>
     <div>
-      <Route path='/' render={(routeProps) => <PostsDisplay {...props} {...routeProps} /> } />
+      <Route exact={true} path='/' render={(routeProps) => <PostsDisplay {...props} {...routeProps} /> } />
       <Route path='/posts/:id' render={(routeProps) => <Post {...props} {...routeProps} /> } />
     </div>
   </Router>
