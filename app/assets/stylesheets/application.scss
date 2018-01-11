@@ -13,7 +13,8 @@
  *= require_tree .
  *= require_self
  */
-
+@import "compass";
+@import 'shared/colors';
 @import 'shared/defaults';
 
 @import 'components/header';

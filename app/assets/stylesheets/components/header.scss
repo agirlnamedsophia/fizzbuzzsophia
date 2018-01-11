@@ -1,3 +1,6 @@
+// this is because of this rabbit hole of an issue https://github.com/rails/sprockets/issues/474
+@import 'shared/colors';
+
 .Header {
   display:flex;
   flex-direction: column;
@@ -6,7 +9,7 @@
   padding: 2em;
   &--title {
     font-size: 2em;
-    background: #f0f0f5;
+    background: $verylightgrey;
     padding: 0.25em 1em;
     margin-bottom: 0.25em;
   }

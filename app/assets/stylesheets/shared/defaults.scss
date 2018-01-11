@@ -1,4 +1,22 @@
+@import 'shared/colors';
+
+@mixin transition($transition...) {
+  -moz-transition:    $transition;
+  -o-transition:      $transition;
+  -webkit-transition: $transition;
+  transition:         $transition;
+}
+
 body {
   font-family: 'Source Serif Pro', serif;
 }
 
+a {
+  @include transition(color .2s ease-out, border-bottom-color .2s ease-out);
+  text-decoration: none;
+  color: #0e184c;
+  border-bottom: solid 1px transparent;
+  &:hover {
+    border-bottom: solid 1px $purple;
+  }
+}
