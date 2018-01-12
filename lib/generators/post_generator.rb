@@ -3,7 +3,7 @@ class PostGenerator < Rails::Generators::Base
 
   def create_post_file
     title = ARGV[0]&.split.join('_').downcase
-    create_file "posts/#{timestamp}/#{title}.md", "# #{created_at}"
+    create_file "posts/#{timestamp}/#{title}.md"
   end
 
   def created_at

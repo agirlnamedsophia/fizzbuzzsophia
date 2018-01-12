@@ -1,10 +1,10 @@
 import React from 'react'
 import queryString from 'query-string'
 import axios from 'axios'
+import Loading from 'react-loading-animation'
 
 import PostTitle from './PostTitle'
 import PostBody from './PostBody'
-
 class PostsDisplay extends React.Component {
   constructor() {
     super()
@@ -52,11 +52,19 @@ class PostsDisplay extends React.Component {
     this.fetchPosts(this.state.currentPage)
   }
 
+  isFetching() {
+    !this.state.fetchedPosts
+  }
+
   render() {
     const posts = this.state.posts
 
     return(
       <div>
+        {
+          !this.state.fetchedPosts &&
+          <Loading />
+        }
         {this.state.fetchedPosts && posts &&
           posts.map((post) =>
             <div key={post.id} className="PostContainer">

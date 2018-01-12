@@ -12,6 +12,7 @@ const PostTitle = (props) => (
       replace>
       {props.post.title}
     </Link>
+    <div className="Post--date">{ props.post.created_at }</div>
   </div>
 )
 

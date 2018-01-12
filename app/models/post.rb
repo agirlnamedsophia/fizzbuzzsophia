@@ -19,6 +19,10 @@ class Post
     @id ||= timestamp
   end
 
+  def created_at
+    @created_at ||= Time.zone.at(timestamp).to_date
+  end
+
   def self.find(id)
     Post.ordered.find { |post| post.id == id.to_i }
   end
@@ -45,10 +49,6 @@ class Post
 
   def short_body
     @short_body ||= body.truncate_words(75)
-  end
-
-  def created_at
-    @created_at ||= Time.zone.at(timestamp)
   end
 
   def timestamp
