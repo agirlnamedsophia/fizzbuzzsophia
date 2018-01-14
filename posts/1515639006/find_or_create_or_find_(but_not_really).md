@@ -8,7 +8,7 @@ So we asked ourselves, why not just create a `CIBuildFailure` record and decide 
 
 We didn't care about fetching the record and asking it about itself — the presence of that record for a specific build number for a specific repository would be enough. We didn't want to retrieve it, we only wanted to know if it was created or, rather, if it already existed.
 
-We opted not to use model validations because it made things more complicated with the way we were checking existence, and it was simpler to lean on database uniqueness constraints. And asking a database for a specific record with uniqueness constraints and indexing on those constraints is `O(1)` (**I think**), so if 8 of the parallel specs fail we would have to make the query 8 times but that's a lot better than making 8 round trips to GitHub.
+We opted not to use model validations because it made things more complicated with the way we were checking existence, and it was simpler to lean on database uniqueness constraints. And asking a database for a specific record with uniqueness constraints and indexing on those constraints is I think `log(n)`, so if 8 of the parallel specs fail we would have to make the query 8 times but that's a lot better than making 8 round trips to GitHub. Our database server is also probably a lot closer than GitHub's app servers. So, it's just faster.
 
 ```
 class CIBuildFailure < ApplicationRecord
