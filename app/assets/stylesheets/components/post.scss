@@ -18,6 +18,11 @@
 .PostBody {
   font-size: 1em;
   text-align: justify;
+  pre {
+    code {
+      display: block;
+    }
+  }
   code {
     line-height: 1.5em;
     background: $codegrey;

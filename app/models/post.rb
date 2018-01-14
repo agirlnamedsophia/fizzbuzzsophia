@@ -48,7 +48,7 @@ class Post
   end
 
   def short_body
-    @short_body ||= body.truncate_words(75)
+    @short_body ||= body.truncate_words(75).split("\n").first
   end
 
   def timestamp
