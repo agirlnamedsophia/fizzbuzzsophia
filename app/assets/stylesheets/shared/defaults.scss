@@ -14,7 +14,7 @@ body {
 a {
   @include transition(color .2s ease-out, border-bottom-color .2s ease-out);
   text-decoration: none;
-  color: #0e184c;
+  color: $purple;
   border-bottom: solid 1px transparent;
   &:hover {
     border-bottom: solid 1px $purple;
