@@ -66,7 +66,7 @@ class PostsDisplay extends React.Component {
           <Loading />
         }
         {this.state.fetchedPosts && posts &&
-          posts.reverse().map((post) =>
+          posts.map((post) =>
             <div key={post.id} className="PostContainer">
               <PostTitle post={post} />
               <PostBody post={post} body={post.short_body} />
