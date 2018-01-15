@@ -30,7 +30,7 @@ class Post
   end
 
   def self.ordered
-    Post.all.sort(&:created_at)
+    Post.all.sort { |post| post.created_at } # rubocop:disable Style/SymbolProc
   end
 
   private
