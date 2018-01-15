@@ -1,8 +1,8 @@
 class PostGenerator < Rails::Generators::Base
-  desc "Creates blank markdown files in a folder with the current timestamp"
+  desc 'Creates blank markdown files in a folder with the current timestamp'
 
   def create_post_file
-    title = ARGV[0]&.split.join('_').downcase
+    title = ARGV[0]&.split&.join('_')&.downcase
     create_file "posts/#{timestamp}/#{title}.md"
   end
 

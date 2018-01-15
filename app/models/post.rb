@@ -1,11 +1,9 @@
 class Post
-  attr_reader :body
-
   def initialize(path:)
     @path = path
   end
 
-  def as_json(options={})
+  def as_json(_options = {})
     @as_json ||= {
       title: title,
       short_body: short_body,
@@ -32,7 +30,7 @@ class Post
   end
 
   def self.ordered
-    Post.all.sort { |post| post.created_at }
+    Post.all.sort(&:created_at)
   end
 
   private

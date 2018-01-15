@@ -1,0 +1,19 @@
+AllCops:
+  Exclude:
+    - 'bin/**/*'
+    - 'db/**/*'
+    - 'config/**/*'
+    - 'vendor/**/*'
+    - 'build/**/*'
+    - 'Gemfile'
+    - 'node_modules/**/*'
+    - 'spec/spec_helper.rb'
+    - 'spec/rails_helper.rb'
+  DisplayStyleGuide: true
+  DisplayCopNames: true
+Documentation:
+  Enabled: false
+Style/ClassAndModuleChildren:
+  Enabled: false
+Style/FrozenStringLiteralComment:
+  Enabled: false
