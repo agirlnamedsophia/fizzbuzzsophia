@@ -30,12 +30,18 @@ class Post
   end
 
   def self.ordered
-    Post.all.sort { |post| post.created_at } # rubocop:disable Style/SymbolProc
+    Post.all.sort do |post| # rubocop:disable Style/SymbolProc
+      post.created_at
+    end.reverse
   end
 
   private
 
   attr_reader :path
+
+  def timestamp
+    @timestamp ||= path[/(\d+)/].to_i
+  end
 
   def title
     @title ||= PostTitle.from_filename filename
@@ -47,10 +53,6 @@ class Post
 
   def short_body
     @short_body ||= body.truncate_words(75).split("\n").first
-  end
-
-  def timestamp
-    @timestamp ||= path[/(\d+)/].to_i
   end
 
   def filename
