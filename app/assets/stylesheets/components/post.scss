@@ -19,13 +19,18 @@
   font-size: 1em;
   text-align: justify;
   pre {
+    overflow-x: auto;
+    background: $codegrey;
+    &:hover,
+    &:focus {
+      width: min-content;
+    }
     code {
       display: block;
     }
   }
   code {
     line-height: 1.5em;
-    background: $codegrey;
     padding: 3px 5px;
   }
 }
@@ -36,4 +41,18 @@
     margin: 0.5em;
     color: $dategrey;
   }
+}
+
+
+@media only screen
+  and (min-device-width: 320px)
+  and (max-device-width: 568px)
+  and (-webkit-min-device-pixel-ratio: 2) {
+
+  .PostBody {
+    pre {
+      max-width: 330px;
+    }
+  }
+
 }
