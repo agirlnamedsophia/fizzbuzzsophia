@@ -43,6 +43,12 @@ jobs:
         paths:
           - vendor/bundle
     - run:
+        name: wait for db
+        command: dockerize -wait tcp://localhost:5432 -timeout 1m
+    - run:
+        name: setup db
+        command: bundle exec rake db:test:prepare
+    - run:
         name: Run tests
         command: |
           bundle exec rspec --profile 10 \
