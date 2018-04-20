@@ -22,17 +22,19 @@ class Post
   end
 
   def self.find(id)
-    Post.ordered.find { |post| post.id == id.to_i }
+    Post.by_recency.find { |post| post.id == id.to_i }
   end
 
   def self.all
     @all ||= Dir["#{Rails.root}/posts/**/*.md"].map { |f| Post.new(path: f) }
   end
 
-  def self.ordered
-    Post.all.sort do |post| # rubocop:disable Style/SymbolProc
+  def self.by_recency
+    posts = Post.all
+    posts.sort do |post| # rubocop:disable Style/SymbolProc
       post.created_at
     end.reverse
+    posts
   end
 
   private
