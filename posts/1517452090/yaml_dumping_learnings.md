@@ -57,7 +57,7 @@ Also, why am I using `safe_load`? It's because serialization is hard. This comes
 
 This might seem just common YAML sense but when you're crafting YAML inside Ruby, you might forget about it.
 
-Say I want to add a series of arbitrary strings to an array in YAML, but all of these strings and arrays need to be dynamically generated. I don't want to write out all that YAML by hand! (otherwise my plan to dominate these giant YAML configuration fails with magical ruby automation will have been thwarted)
+Say I want to add a series of arbitrary strings to an array in YAML, but all of these strings and arrays need to be dynamically generated. I don't want to write out all that YAML by hand! (otherwise my plan to dominate these giant YAML configuration files with magical ruby automation will have been thwarted)
 
 So say I have this class
 
@@ -69,7 +69,7 @@ So say I have this class
       end
 
       def add_snack(snack)
-        snacks.concat [snack].flatten
+        snacks << snack
       end
     end
 
