@@ -88,9 +88,8 @@ workflows:
     - test:
         context: heroku
     - fizzbuzzsophia--deploy:
-        requires:
-          - hold
         context: heroku
         requires:
         - lint
         - test
+        - hold
