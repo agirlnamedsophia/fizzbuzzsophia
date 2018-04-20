@@ -27,9 +27,15 @@ jobs:
     docker:
     - image: circleci/ruby:2.4.2-node-browsers
       environment:
+        PGHOST: 127.0.0.1
+        DATABASE_URL: "postgres://fizzbuzzsophia@localhost/fizzbuzzsophia_test"
         BUNDLE_PATH: vendor/bundle
         RAILS_ENV: test
     - image: circleci/postgres:9.6
+      environment:
+        POSTGRES_USER: fizzbuzzsophia
+        POSTGRES_DB: fizzbuzzsophia_test
+        POSTGRES_PASSWORD: ""
     steps:
     - checkout
     - restore_cache:
