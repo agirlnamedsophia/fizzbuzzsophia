@@ -51,7 +51,7 @@ jobs:
                             --format progress
     - store_test_results:
         path: test_results
-  deploy:
+  fizzbuzzsophia--deploy:
     docker:
     - image: circleci/ruby:2.4.2
     steps:
@@ -70,14 +70,14 @@ workflows:
   version: 2
   all:
     jobs:
-    - deploy:
-        context: heroku
-        branches:
-          only: "master"
-        requires:
-        - lint
-        - test
     - lint:
         context: heroku
     - test:
         context: heroku
+    - fizzbuzzsophia--deploy:
+        requires:
+          - hold
+        context: heroku
+        requires:
+        - lint
+        - test
