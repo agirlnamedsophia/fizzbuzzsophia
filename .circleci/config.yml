@@ -75,12 +75,10 @@ jobs:
     - run:
         name: Deploy to Heroku
         command: |
-          if [ $CIRCLE_BRANCH = 'master' ]; then
-            heroku git:remote -a fizzbuzzsophia
-            git push https://heroku:$HEROKU_API_KEY@git.heroku.com/fizzbuzzsophia.git HEAD:refs/heads/master
-            sleep 5
-            heroku restart
-          fi
+          heroku git:remote -a fizzbuzzsophia
+          git push https://heroku:$HEROKU_API_KEY@git.heroku.com/fizzbuzzsophia.git HEAD:refs/heads/master
+          sleep 5
+          heroku restart
 workflows:
   version: 2
   all:
