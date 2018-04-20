@@ -128,4 +128,4 @@ Nooooooooo! Seems like I don't want to just shovel things into my `snacks`. (I m
     irb(main):125:0> party.snacks.map { |snack| snack["name"] }
     => ["chz plate", "meat plate", "veggie plate"]
 
-**sigh** yes please that sounds delicious. I wish there was dessert, though.
+**sigh** yes please that sounds delicious. I wish there was dessert, though!
